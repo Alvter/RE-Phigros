@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.Events;
-using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 
 [System.Serializable]
     public class BPMData
@@ -293,7 +295,7 @@ public class LoadChart : MonoBehaviour
     public UnityEvent ChartLoadOver;
     public bool isOver = false;
 
-    void Awake()
+    async void Awake()
     {
         _instance = this;
 
@@ -302,17 +304,19 @@ public class LoadChart : MonoBehaviour
         chart = JsonUtility.FromJson<Chart>(json);
 
         Application.targetFrameRate = 250;
+        // 使应用程序在后台运行
+        Application.runInBackground = true;
+
+        await Load();
     }
 
-    void Update()
+    async UniTask Load()
     {
-        if (chart != null && !isOver)
-        {
-            isOver = true;
-            LoadEvent.Instance.Init(chart);
-            Function.Instance.Init(chart);
-            ReLoadChart.Instance.Init(chart);
-        }
+        await UniTask.WaitUntil(() => chart != null);
+
+        LoadEvent.Instance.Init(chart);
+        Function.Instance.Init(chart);
+        ReLoadChart.Instance.Init(chart);
     }
 
 }
