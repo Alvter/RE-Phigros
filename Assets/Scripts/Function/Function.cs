@@ -73,7 +73,7 @@ public class Function : MonoBehaviour
     public float bpmBeat(int x)
     {
         return bpmList[x].startTime[0] + (float)bpmList[x].startTime[1] / bpmList[x].startTime[2];
-    }
+    } 
 
     public List<SpeedEvent> speedEvent;
     public float noteYpos(int m,float t)
