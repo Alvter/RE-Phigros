@@ -299,10 +299,6 @@ public class LoadChart : MonoBehaviour
     {
         _instance = this;
 
-        textAsset = Resources.Load<TextAsset>("Chart/" + chartName + "/chart");
-        json = textAsset.text;
-        chart = JsonUtility.FromJson<Chart>(json);
-
         Application.targetFrameRate = 250;
         // 使应用程序在后台运行
         Application.runInBackground = true;
@@ -312,11 +308,16 @@ public class LoadChart : MonoBehaviour
 
     async UniTask Load()
     {
+        textAsset = Resources.Load<TextAsset>("Chart/" + chartName + "/chart");
+        json = textAsset.text;
+        chart = JsonConvert.DeserializeObject<Chart>(json);
         await UniTask.WaitUntil(() => chart != null);
 
         LoadEvent.Instance.Init(chart);
         Function.Instance.Init(chart);
         ReLoadChart.Instance.Init(chart);
+
+        GameController.Instance.ScriptStart();
     }
 
 }

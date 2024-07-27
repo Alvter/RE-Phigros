@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     public LoadChart LoadChart{ get; private set;}
     public ReLoadChart ReLoadChart{ get; private set;}
     public LoadEvent LoadEvent{ get; private set;}
+    public Function Function{ get; private set;}
+    public MusicPlayer MusicPlayer{ get; private set;}
 
 
     public void Awake()
@@ -25,6 +27,8 @@ public class GameController : MonoBehaviour
         LoadChart = LoadChart.Instance;
         ReLoadChart = ReLoadChart.Instance;
         LoadEvent = LoadEvent.Instance;
+        Function = Function.Instance;
+        MusicPlayer = MusicPlayer.Instance;
 
         Init();
     }
