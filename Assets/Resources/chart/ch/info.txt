@@ -1,0 +1,9 @@
+#
+Name: ネオネオン
+Path: 87144412
+Song: 87144412.wav
+Picture: 87144412.png
+Chart: 87144412.json
+Level: IN Lv.13
+Composer: DECO*27
+Charter: Anxve13

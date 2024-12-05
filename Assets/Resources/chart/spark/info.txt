@@ -1,0 +1,9 @@
+#
+Name: The Spark
+Path: 65533523
+Song: 65533523.mp3
+Picture: 65533523.jpg
+Chart: 65533523.json
+Level: SP Lv.?
+Composer: Various Artists、Scott Brown、M-Project
+Charter: rx666
